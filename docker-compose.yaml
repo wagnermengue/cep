@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mg-php:
+    build: '.docker'
+    container_name: mg-php
+    hostname: mg-php
+    volumes:
+      - .:/var/www
+    ports:
+      - 9000:9000
+    networks:
+      - mg-php
+
+networks:
+  mg-php:
+    driver: bridge

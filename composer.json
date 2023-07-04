@@ -1,0 +1,44 @@
+{
+    "name": "wagnermengue/zipcode",
+    "description": "zipcode, cep",
+    "keywords": [
+        "zipcode",
+        "cep",
+        "wagnermengue",
+        "eduardogoncalves"
+    ],
+    "homepage": "https://github.com/wagnermengue/zipcode",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Wagner Mengue",
+            "email": "dev.mengue@gmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Eduardo Gonçalves",
+            "email": "dudugoncalves20@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wagnermengue\\Zipcode\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wagnermengue\\Zipcode\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
