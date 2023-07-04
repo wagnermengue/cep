@@ -46,7 +46,6 @@ class ViaCep
         }
 
         if(curl_error($this->curlHandle)) {
-            //dificil de testar
             throw new Exception('curl error', $httpCode);
         }
     }
