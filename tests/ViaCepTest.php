@@ -1,25 +1,14 @@
 <?php
 
+namespace Wagnermengue\Zipcode\Tests;
+
+use Exception;
 use PHPUnit\Framework\TestCase;
 use Wagnermengue\Zipcode\ApiClients\ViaCep;
 
 class ViaCepTest extends TestCase
 {
     public function testFind()
-    {
-        $viaCep = new ViaCep();
-        $result = $viaCep->find(93285630);
-        $this->assertJson($result);
-    }
-
-    public function testFindInvalidCep()
-    {
-        $viaCep = new ViaCep();
-        $this->expectException(Exception::class);
-        $viaCep->find(00000000);
-    }
-
-    public function testJsonReturn()
     {
         $viaCep = new ViaCep();
         $result = $viaCep->find(93285630);
@@ -30,6 +19,14 @@ class ViaCepTest extends TestCase
             "cidade" => "Esteio",
             "uf" => "RS",
         ]);
+        $this->assertJson($result);
         $this->assertEquals($expected, $result);
+    }
+
+    public function testFindInvalidCep()
+    {
+        $viaCep = new ViaCep();
+        $this->expectException(Exception::class);
+        $viaCep->find(00000000);
     }
 }

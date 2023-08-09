@@ -11,13 +11,6 @@ class ClientTest extends TestCase
     {
         $client = new Client();
         $result = $client->find(93285630);
-        $this->assertJson($result);
-    }
-
-    public function testJsonReturn()
-    {
-        $client = new Client();
-        $result = $client->find(93285630);
         $expected = json_encode([
             "logradouro" => "Rua José Casemiro Castilhos",
             "complemento" => "",
@@ -25,6 +18,7 @@ class ClientTest extends TestCase
             "cidade" => "Esteio",
             "uf" => "RS",
         ]);
+        $this->assertJson($result);
         $this->assertEquals($expected, $result);
     }
 }
