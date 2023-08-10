@@ -3,14 +3,17 @@
 namespace Wagnermengue\Zipcode\ApiClients;
 
 use Exception;
+use Wagnermengue\Zipcode\Exceptions\NotFoundZipcodeException;
 
 class ViaCep
 {
+    private int $cep;
     private $curlHandle;
     public function find(int $cep)
     {
+        $this->cep = $cep;
         $this->makeHandle();
-        $this->makeUrl($cep);
+        $this->makeUrl();
         $this->configHandle();
         $result = $this->getResult();
         $this->validate();
@@ -23,9 +26,9 @@ class ViaCep
         $this->curlHandle = curl_init();
     }
 
-    private function makeUrl(int $cep)
+    private function makeUrl()
     {
-        curl_setopt($this->curlHandle, CURLOPT_URL, "https://viacep.com.br/ws/$cep/json/");
+        curl_setopt($this->curlHandle, CURLOPT_URL, "https://viacep.com.br/ws/$this->cep/json/");
     }
 
     private function configHandle()
@@ -42,7 +45,7 @@ class ViaCep
     {
         $httpCode = $this->getHttpCode();
         if ($httpCode != 200) {
-            throw new Exception('Zipcode not found', $httpCode);
+            throw new Exception('Does not a OK status code', $httpCode);
         }
 
         if(curl_error($this->curlHandle)) {
@@ -63,6 +66,9 @@ class ViaCep
     private function parseResponse($result)
     {
         $returnDecoded = json_decode($result);
+        if(property_exists($returnDecoded, "erro")) {
+            throw new NotFoundZipcodeException();
+        }
         $data = [
             'logradouro' => $returnDecoded->logradouro,
             'complemento' => $returnDecoded->complemento,
