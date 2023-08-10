@@ -5,6 +5,7 @@ namespace Wagnermengue\Zipcode;
 use Exception;
 use Wagnermengue\Zipcode\ApiClients\ViaCep;
 use Wagnermengue\Zipcode\Exceptions\InvalidZipcodeException;
+use Wagnermengue\Zipcode\ValueObjects\Zipcode;
 
 class ZipcodeClient
 {
@@ -13,11 +14,8 @@ class ZipcodeClient
      */
     public function find(int $zipcode)
     {
-        $length = strlen((string)$zipcode);
-        if ($length != 8) {
-            throw new InvalidZipcodeException();
-        }
+        $zipcodeObject = new Zipcode($zipcode);
         $client = new ViaCep();
-        return $client->find($zipcode);
+        return $client->find($zipcodeObject);
     }
 }

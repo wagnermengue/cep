@@ -4,14 +4,14 @@ namespace Wagnermengue\Zipcode\ApiClients;
 
 use Exception;
 use Wagnermengue\Zipcode\Exceptions\NotFoundZipcodeException;
-
+use Wagnermengue\Zipcode\ValueObjects\Zipcode;
 class ViaCep
 {
     private int $cep;
     private $curlHandle;
-    public function find(int $cep)
+    public function find(Zipcode $zipcode)
     {
-        $this->cep = $cep;
+        $this->cep = $zipcode->getNumber();
         $this->makeHandle();
         $this->makeUrl();
         $this->configHandle();
