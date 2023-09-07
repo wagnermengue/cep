@@ -4,7 +4,6 @@ namespace Wagnermengue\Zipcode;
 
 use Exception;
 use Wagnermengue\Zipcode\ApiClients\ViaCep;
-use Wagnermengue\Zipcode\Exceptions\InvalidZipcodeException;
 use Wagnermengue\Zipcode\ValueObjects\Zipcode;
 
 class ZipcodeClient

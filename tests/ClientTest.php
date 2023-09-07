@@ -2,7 +2,6 @@
 
 namespace Wagnermengue\Zipcode\Tests;
 
-use Exception;
 use PHPUnit\Framework\TestCase;
 use Wagnermengue\Zipcode\Exceptions\InvalidZipcodeException;
 use Wagnermengue\Zipcode\Exceptions\NotFoundZipcodeException;
@@ -13,7 +12,8 @@ class ClientTest extends TestCase
     public function testFind()
     {
         $client = new ZipcodeClient();
-        $result = $client->find(93285630);
+        $result = $client->find(93265162);
+        print_r($result);
         $expected = json_encode([
             "logradouro" => "Rua José Casemiro Castilhos",
             "complemento" => "",
