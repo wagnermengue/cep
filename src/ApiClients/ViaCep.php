@@ -5,7 +5,7 @@ namespace Wagnermengue\Zipcode\ApiClients;
 use Exception;
 use Wagnermengue\Zipcode\Exceptions\NotFoundZipcodeException;
 use Wagnermengue\Zipcode\ValueObjects\Zipcode;
-class ViaCep
+class ViaCep implements ApiClientInterface
 {
     private int $cep;
     private $curlHandle;
