@@ -12,7 +12,7 @@ class ClientTest extends TestCase
     public function testFind()
     {
         $client = new ZipcodeClient();
-        $result = $client->find(93285630);
+        $result = $client->find(93285630, "brasil-api");
         $expected = json_encode([
             "logradouro" => "Rua José Casemiro Castilhos",
             "complemento" => "",
@@ -28,13 +28,13 @@ class ClientTest extends TestCase
     {
         $client = new ZipcodeClient();
         $this->expectException(InvalidZipcodeException::class);
-        $client->find(2345);
+        $client->find(2345, "");
     }
 
     public function testZipcodeNotFound()
     {
         $client = new ZipcodeClient();
         $this->expectException(NotFoundZipcodeException::class);
-        $client->find(11111111);
+        $client->find(11111111, "");
     }
 }
