@@ -17,16 +17,16 @@ composer require wagnermengue/zipcode
 
 ```php
 $zipCode = new ZipcodeClient();
-$zipCode->find(93265162);
+$zipCode->find(93285630);
 ```
 Expected:
 ```json
 {
-  "logradouro":"Rua Vinte e Quatro de Agosto",
-  "complemento":"de 652 a 1100 - lado par",
-  "bairro":"Centro",
-  "cidade":"Esteio",
-  "uf":"RS"
+  "logradouro" : "Rua José Casemiro Castilhos",
+  "complemento" : "",
+  "bairro" : "Olímpica",
+  "cidade" : "Esteio",
+  "uf" : "RS"
 }
 ```
 
